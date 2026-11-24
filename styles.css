@@ -1,0 +1,327 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #09091b, #17133c);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 25px 15px;
+}
+
+.container {
+    width: 100%;
+    max-width: 650px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 42px;
+    letter-spacing: 5px;
+    color: #ffffff;
+    text-shadow: 0 0 15px #8b5cf6;
+}
+
+header h1 span {
+    color: #00e5ff;
+}
+
+header p {
+    color: #aaa;
+    margin-top: 8px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 30px 0;
+}
+
+.stat-box {
+    flex: 1;
+    padding: 15px;
+    background: #211c46;
+    border: 1px solid #51458b;
+    border-radius: 12px;
+    box-shadow: 0 0 12px #6c42c8;
+}
+
+.stat-box h3 {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.stat-box p {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 8px;
+    color: #00e5ff;
+}
+
+.game-area {
+    height: 420px;
+    background: #100e27;
+    border: 2px solid #6544bb;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 25px #5635a8;
+}
+
+#message {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 100%;
+    color: #00e5ff;
+    font-weight: bold;
+    font-size: 20px;
+    z-index: 5;
+    text-shadow: 0 0 10px #00e5ff;
+}
+
+.lanes {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.lane {
+    flex: 1;
+    position: relative;
+    border-right: 1px solid #30275b;
+    background: rgba(255,255,255,0.02);
+}
+
+.lane:nth-child(even) {
+    background: rgba(255,255,255,0.04);
+}
+
+.note {
+    position: absolute;
+    width: 75%;
+    height: 45px;
+    left: 12.5%;
+    top: -50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #8b5cf6, #00d9ff);
+    box-shadow: 0 0 18px #00d9ff;
+    color: white;
+}
+
+.target {
+    position: absolute;
+    bottom: 25px;
+    width: 75%;
+    left: 12.5%;
+    height: 48px;
+    border: 2px solid #00e5ff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    color: #00e5ff;
+    box-shadow: 0 0 12px #00e5ff;
+}
+
+.lane.hit .target {
+    background: #00e5ff;
+    color: #100e27;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+button {
+    padding: 15px 45px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #8b5cf6, #00cfff);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 20px #6d4bd1;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 30px #00d9ff;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.instructions {
+    background: #211c46;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 15px;
+}
+
+.instructions h3 {
+    color: #00e5ff;
+    margin-bottom: 10px;
+}
+
+.instructions p {
+    color: #ccc;
+    font-size: 14px;
+}
+
+.keys {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.keys span {
+    width: 42px;
+    height: 42px;
+    border: 1px solid #00e5ff;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    color: #00e5ff;
+    font-size: 23px;
+}
+
+footer {
+    color: #777;
+    font-size: 12px;
+    margin-top: 25px;
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 32px;
+    }
+
+    .game-area {
+        height: 380px;
+    }
+
+    .stats {
+        gap: 6px;
+    }
+
+    .stat-box {
+        padding: 10px 4px;
+    }
+
+    .stat-box h3 {
+        font-size: 10px;
+    }
+
+    .stat-box p {
+        font-size: 18px;
+    }
+}
+
+/* Memastikan area game bisa menerima sentuhan */
+/* KONTROL MULTI PERANGKAT */
+
+.lane {
+    cursor: pointer;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.target,
+.note {
+    pointer-events: none;
+}
+
+.lane:active .target,
+.lane.hit .target {
+    background: #00e5ff;
+    color: #100e27;
+    box-shadow: 0 0 25px #00e5ff;
+}
+
+/* Tampilan HP dan tablet */
+@media (max-width: 768px) {
+    body {
+        padding: 12px 8px;
+    }
+
+    .game-area {
+        height: min(65vh, 500px);
+        min-height: 320px;
+    }
+
+    .target {
+        width: 88%;
+        left: 6%;
+        height: 55px;
+    }
+
+    .note {
+        width: 88%;
+        left: 6%;
+        height: 45px;
+    }
+
+    button {
+        min-height: 48px;
+    }
+}
+
+/* Tampilan laptop dan PC */
+@media (min-width: 769px) {
+    .game-area {
+        height: 420px;
+    }
+}
+
+.music-upload {
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+    width: min(100% - 30px, 650px);
+    margin: 0 auto 24px;
+    padding: 18px;
+    background: #211c46;
+    border: 1px solid #51458b;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.music-upload p {
+    color: #aaa;
+    font-size: 13px;
+}
+
+.music-upload select {
+    min-width: 150px;
+    padding: 10px 14px;
+    border: 1px solid #00e5ff;
+    border-radius: 8px;
+    background: #100e27;
+    color: white;
+    font-size: 15px;
+}

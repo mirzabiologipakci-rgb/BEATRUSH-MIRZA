@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beat Rush - Rhythm Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>BEAT<span>RUSH</span></h1>
+            <p>Feel the Beat, Hit the Notes!</p>
+        </header>
+
+        <div class="stats">
+            <div class="stat-box">
+                <h3>SCORE</h3>
+                <p id="score">0</p>
+            </div>
+            <div class="stat-box">
+                <h3>HIGH SCORE</h3>
+                <p id="highScore">0</p>
+            </div>
+            <div class="stat-box">
+                <h3>COMBO</h3>
+                <p id="combo">0</p>
+            </div>
+            <div class="stat-box">
+                <h3>TIME</h3>
+                <p id="time">60</p>
+            </div>
+        </div>
+
+        <div class="game-area" tabindex="0" aria-label="Area permainan Beat Rush">
+            <div id="message">READY TO PLAY?</div>
+            <div class="lanes">
+                <div class="lane" data-lane="0"><div class="target">←</div></div>
+                <div class="lane" data-lane="1"><div class="target">↓</div></div>
+                <div class="lane" data-lane="2"><div class="target">↑</div></div>
+                <div class="lane" data-lane="3"><div class="target">→</div></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn">▶ START GAME</button>
+            <button id="finishBtn" disabled>■ SELESAIKAN</button>
+        </div>
+
+        <div class="instructions">
+            <h3>HOW TO PLAY</h3>
+            <p>Tekan tombol panah keyboard sesuai jalurnya!</p>
+            <div class="keys">
+                <span>←</span>
+                <span>↓</span>
+                <span>↑</span>
+                <span>→</span>
+            </div>
+        </div>
+
+        <footer>
+            <p>BEAT RUSH © 2026 | JavaScript Rhythm Game</p>
+        </footer>
+    </div>
+    
+<div class="music-upload">
+    <label for="musicFile">🎵 Pilih Musik MP3</label>
+    <input
+        type="file"
+        id="musicFile"
+        accept="audio/mpeg,audio/mp3"
+    >
+    <label for="tempoSelect">Pilih tempo (60–200 BPM)</label>
+    <select id="tempoSelect" aria-label="Pilih tempo lagu"></select>
+    <p id="musicStatus">Belum ada musik dipilih</p>
+</div>
+
+<audio id="bgMusic" loop></audio>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
